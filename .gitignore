@@ -1,0 +1,17 @@
+target/
+data/
+logs/
+*.log
+*.tmp
+*.out
+*.pid
+
+frontend/node_modules/
+frontend/dist/
+
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+问题/
