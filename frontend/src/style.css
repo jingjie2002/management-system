@@ -1,0 +1,199 @@
+/* 全局主题与基础变量 */
+:root {
+  --primary-color: #409EFF;
+  --success-color: #67C23A;
+  --warning-color: #E6A23C;
+  --danger-color: #F56C6C;
+  --info-color: #909399;
+  --text-main: #303133;
+  --text-regular: #606266;
+  --text-secondary: #909399;
+  --border-color: #DCDFE6;
+  --bg-color: #f0f2f5;
+  --header-height: 50px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  font-family: 'Inter', 'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: linear-gradient(120deg, #4f46e5, #0ea5e9, #14b8a6, #6366f1);
+  background-size: 300% 300%;
+  animation: bg-flow 16s ease infinite;
+  color: var(--text-main);
+}
+
+#app {
+  height: 100vh;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at 20% 20%, rgba(255,255,255,0.25), transparent 45%),
+              radial-gradient(circle at 80% 15%, rgba(255,255,255,0.2), transparent 40%),
+              radial-gradient(circle at 50% 80%, rgba(255,255,255,0.18), transparent 50%);
+  animation: float-mask 18s ease-in-out infinite;
+  z-index: 0;
+}
+
+#app {
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes bg-flow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes float-mask {
+  0% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(0, -10px, 0) scale(1.02); }
+  100% { transform: translate3d(0, 0, 0) scale(1); }
+}
+
+/* 滚动条 */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Element Plus 组件视觉增强 */
+.el-card {
+  border: none !important;
+  border-radius: 8px !important;
+  box-shadow: 0 1px 4px rgba(0,21,41,.08) !important;
+  transition: all 0.3s;
+}
+
+.el-card:hover {
+  box-shadow: 0 4px 12px rgba(0,21,41,.12) !important;
+  transform: translateY(-2px);
+}
+
+.el-button {
+  border-radius: 4px !important;
+  font-weight: 500 !important;
+}
+
+.el-input__wrapper {
+  border-radius: 4px !important;
+  box-shadow: 0 0 0 1px #dcdfe6 inset !important;
+}
+
+.el-input__wrapper:hover {
+  box-shadow: 0 0 0 1px #c0c4cc inset !important;
+}
+
+.el-input__wrapper.is-focus {
+  box-shadow: 0 0 0 1px var(--primary-color) inset !important;
+}
+
+.el-table {
+  border-radius: 8px !important;
+  overflow: hidden;
+}
+
+.el-table th.el-table__cell {
+  background-color: #f5f7fa !important;
+  color: var(--text-main);
+  font-weight: 600;
+  height: 50px;
+}
+
+.el-pagination {
+  margin-top: 20px;
+  justify-content: flex-end;
+}
+
+.el-dialog {
+  border-radius: 8px !important;
+  overflow: hidden;
+}
+
+.el-dialog__header {
+  margin-right: 0 !important;
+  border-bottom: 1px solid var(--border-color);
+  padding: 15px 20px !important;
+  background-color: #fff;
+}
+
+.el-dialog__footer {
+  border-top: 1px solid var(--border-color);
+  padding: 15px 20px !important;
+}
+
+/* 常用工具类 */
+.text-success { color: var(--success-color) !important; }
+.text-warning { color: var(--warning-color) !important; }
+.text-danger { color: var(--danger-color) !important; }
+.text-primary { color: var(--primary-color) !important; }
+.text-info { color: var(--info-color) !important; }
+
+.mt-20 { margin-top: 20px; }
+.mb-20 { margin-bottom: 20px; }
+.mr-10 { margin-right: 10px; }
+.ml-10 { margin-left: 10px; }
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* 仪表盘公共样式 */
+.dashboard-container {
+  padding: 20px;
+}
+
+.chart-container {
+  height: 350px;
+  width: 100%;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.card-value {
+  font-size: 28px;
+  font-weight: 700;
+  margin-top: 10px;
+  color: var(--text-main);
+}
+
+.card-sub-text {
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-top: 5px;
+}
