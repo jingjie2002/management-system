@@ -2,28 +2,23 @@
 
 ## 🎯 快速启动（交付版）
 
-## ✅ 环境自检工具
-仓库包含多个批处理脚本帮助验证本机环境：
-- `check_env.bat` 检查 Java/Node/MySQL 基础设置。
-- `full_env_check.bat` 执行完整流程，包含依赖安装、服务启动、数据库初始化。
-- `final_check.bat` 用于最后验收，确认前后端都能启动。
+## ✅ 唯一启动入口（推荐）
+项目仅保留一个启动脚本：`start_all.bat`
 
-只需在 PowerShell/命令行中运行相应脚本即可获得诊断输出。
-
-
-### 方案一：一键交付启动（推荐）
-```bash
-# 双击运行（无需MySQL）
-ready_to_submit.bat
-```
-然后访问：http://localhost:5173
-
-### 方案二：标准H2启动（无需MySQL）
+### 一键启动（默认 H2，可直接演示）
 ```bash
 start_all.bat
 ```
+脚本会自动完成以下动作：
+1. 检查 Java/Node 环境
+2. 启动后端（8080）
+3. 等待后端健康检查
+4. 启动前端（5173）
+5. 自动打开浏览器
 
-### 方案三：MySQL启动（可选）
+访问地址：http://localhost:5173
+
+### MySQL 启动（可选）
 
 #### 1. 启动MySQL服务
 ```powershell
@@ -54,10 +49,10 @@ net start MySQL84
 
 #### 4. 启动系统
 ```bash
-# 启动后端 + 前端
-start_all_mysql.bat
+# 统一仍使用唯一脚本入口
+start_all.bat
 ```
-若本机3306不可用，脚本会自动降级到H2模式，保证系统可启动。
+如需指定连接，启动前可设置环境变量：`DB_URL`、`DB_USERNAME`、`DB_PASSWORD`。
 
 ## 📊 系统架构
 

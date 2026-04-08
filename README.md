@@ -31,30 +31,26 @@
 ### 4.1 环境要求
 - JDK 17+
 - Node.js 18+
-- MySQL 8.x（你可用 Navicat 管理）
+- MySQL 8.x（可选）
 
 ### 4.2 一键启动（H2模式，快速演示）
 1. 双击 `start_all.bat`
-2. 脚本会自动执行环境自检、自动尝试安装缺失依赖、自动释放 8080/5173 端口
-3. 启动后会自动健康检查并自动尝试打开浏览器
-3. 浏览器访问：`http://localhost:5173`
+2. 脚本会自动检查 Java/Node 环境、拉起后端和前端
+3. 脚本会自动打开浏览器：`http://localhost:5173`
 
-### 4.3 MySQL模式（答辩推荐）
-1. 使用 Navicat 新建数据库：`management_system`
+### 4.3 MySQL模式（可选）
+如需使用 MySQL，请先完成：
+1. 新建数据库：`management_system`
 2. 导入脚本：`src/main/resources/schema.sql`
-3. 修改 `src/main/resources/application-mysql.properties` 中账号密码
-4. 双击 `start_all_mysql.bat`
-5. 脚本会自动执行环境自检、自动尝试安装缺失依赖、自动释放 8080/5173 端口
-6. 启动后会自动健康检查并自动尝试打开浏览器
-6. 浏览器访问：`http://localhost:5173`
+3. 通过环境变量覆盖连接信息后再启动：
+	- `DB_URL`
+	- `DB_USERNAME`
+	- `DB_PASSWORD`
+4. 执行 `start_all.bat`（默认仍可回落到本地 H2 模式）
 
-### 4.4 可单独执行的自检/预检脚本
-- `check_env.bat --auto-fix --no-pause`：环境检测并自动修复
-- `preflight.bat h2`：释放端口并做H2模式预检
-- `preflight.bat mysql`：释放端口并检测3306连通
-- `health_check.bat --open`：启动后端口健康检查并自动打开浏览器
-- `doctor.bat`：一键诊断 localhost 拒绝连接问题
-- `install_env.ps1`：自动安装 JDK17 与 Node.js LTS
+### 4.4 仅保留一个启动脚本
+- 项目根目录仅保留：`start_all.bat`
+- 该脚本是唯一推荐入口，便于在不同电脑上统一启动方式
 
 默认账号：
 - `admin / 123456`
@@ -88,13 +84,7 @@ management-system
 │  ├─ api
 │  ├─ router
 │  └─ views
-├─ check_env.bat
-├─ preflight.bat
-├─ health_check.bat
-├─ doctor.bat
-├─ install_env.ps1
 ├─ start_all.bat
-├─ start_all_mysql.bat
 └─ pom.xml
 ```
 
